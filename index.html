@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notes app</title>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+    <script src="script.js" defer></script>
+    <!-- <link rel="stylesheet" href="main.css"> -->
+</head>
+
+<body onload="initClock()">
+    <div class="splash">
+        <h1><img src="notelaapp.PNG" alt=""></h1>
+    </div>
+    <nav class="row border border-2 mx-4">
+        <h1 class="text-black display-3 col-6 fw-bolder">NOTELA</h1>
+
+        <div class="text-end fs-3 col-6 px-3">
+            <div class="datetime">
+                <div class="time">
+                    <span id="hour">00</span>:
+                    <span id="minutes">00</span>
+                    <span id="period">AM</span>
+                </div>
+                <div class="date">
+                    <span id="dayname">Day</span>,
+                    <span id="month">Month</span>
+                    <span id="daynum">00</span>
+                </div>
+            </div>
+        </div>
+    <!--digital clock start-->
+     
+    <!--didital clock javascript-->
+    </nav>
+
+    <div class="row container-fluid mt-3 mx-auto">            
+        <section class="col-4 border border-5 py-3">
+            <!--Notes Creation-->
+            
+                    <h1>Notes</h1>
+                     <form id="new-note-form">
+                        <input 
+                            type="text" 
+                            name="new-note-input" 
+                            id="new-note-input" 
+                            placeholder="Write your notes here" 
+                            class="form-control"/>
+
+                            <div class="row justify-content-end my-3">
+                                <button type="button" onclick="addBtn()";
+                                id="new-note-submit" 
+                                value="Add note" 
+                                class="btn btn-success col-3 me-3">Add</button>
+                            </div>
+                        
+                    </form> 
+
+                    <!-- <div id="newtask">
+                        <input type="text" placeholder="New Note">
+                        <button id="push">Add</button>
+                    </div>
+
+                <main>
+                    <section class="note-list">     
+                        <div id="notes"></div>
+                    </section>
+                </main> -->
+                
+
+                <!-- To-Do List Creation -->
+            <section>
+                <h1>To Do List</h1>
+                <form id="new-task-form">
+                    <input 
+                        type="text" 
+                        id="new-task-input" 
+                        placeholder="What do you have planned?"
+                        class="form-control"
+                        autocomplete="off"/>
+                    <div class="row justify-content-end my-3">
+                        <button type="submit" class="btn btn-warning col-3 me-3 my-3">Create</button>
+                    </div>
+                </form>
+            </section>
+        </section>
+
+        <!--List of notes-->
+        <section class="flex-wrap col-4 border border-2 py-3 overflow-scroll" style="height: 480px;">
+            <h2>Notes</h2> 
+            <div id="notes" class="overflow-hidden">
+            </div>
+        </section>
+
+        <section class="flex-column col-4 border border-2 py-3 overflow-scroll" style="height: 480px;">
+            <h2>Tasks</h2>            
+            <div id="tasks" class="overflow-hidden">
+            </div>
+        </section>
+    </div>
+
+        <!--digital clock start
+        <div class="datetime">
+            <div class="date">
+                <span id="dayname">Day</span>,
+                <span id="month">Month</span>
+                <span id="daynum">00</span>,
+                <span id="year">Year</span>
+            </div>
+            <div class="time">
+                <span id="hour">00</span>:
+            <span id="minutes">00</span>:
+                <span id="seconds">00</span>
+                <span id="period">AM</span>
+            </div>
+        </div>
+        <!--didital clock javascript
+    <script type="text/javascript">
+        function updateClock() {
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds(),
+                pe = "AM";
+
+                if (hou == 0) {
+                    hou = 12;
+                }
+                if (hou > 12) {
+                    hou = hou - 12
+                    pe = "PM";
+                }
+
+                Number.prototype.pad=function(digits) {
+                    for(var n = this.toString(); n.length <digits; n = 0 + n);
+                    return n;
+                }
+
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+                var values = [week[dname], months[mo], dnum.pad(2), yr.pad(2), hou.pad(2), min.pad(2), sec.pad(2), pe];
+                for (var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+            
+        }
+
+        function initClock() {
+            updateClock();
+            window.setInterval("updateClock()",1);
+        }
+    </script>-->
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="./node.js"></script>
+    <script type="text/javascript">
+        function updateClock() {
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds(),
+                pe = "AM";
+    
+                if (hou == 0) {
+                    hou = 12;
+                }
+                if (hou > 12) {
+                    hou = hou - 12
+                    pe = "PM";
+                }
+    
+                Number.prototype.pad=function(digits) {
+                    for(var n = this.toString(); n.length <digits; n = 0 + n);
+                    return n;
+                }
+    
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var ids = ["dayname", "month", "daynum", "hour", "minutes", "period"];
+                var values = [week[dname], months[mo], dnum.pad(2), hou.pad(2), min.pad(2), pe];
+                for (var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+            
+        }
+    
+        function initClock() {
+            updateClock();
+            window.setInterval("updateClock()",1);
+        }
+    </script>   
+</body> 
+</html>            
